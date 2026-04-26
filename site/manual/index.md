@@ -8,6 +8,6 @@ of reference for all subjects the Manual covers.
 
 ## Table of Contents
 
-- [0 | Index](./index)
-- [1 | Trains](./trains)
-- [2 | Tracks](./tracks)
+- [0: Index](./index)
+- [1: Trains](./trains)
+- [2: Tracks](./tracks)
