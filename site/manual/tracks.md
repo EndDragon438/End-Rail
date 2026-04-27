@@ -7,6 +7,6 @@ and construction.
 ## Table of Contents
 
 - [Lines](./tracks-lines)
-- [Junctions](./tracks-junctions)
+- [Intersections](./tracks-intersections)
 - [Signals](./tracks-signals)
 - [Stations](./tracks-stations)
