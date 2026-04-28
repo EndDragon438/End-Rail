@@ -11,3 +11,38 @@ of reference for all subjects the Manual covers.
 - [0: Index](./index)
 - [1: Trains](./trains)
 - [2: Tracks](./tracks)
+
+## Reading the Manual
+
+This manual incorporates several patterns that the reader should be aware
+of.
+
+First of all, this manual uses metric units for all measurement. Most
+commonly, the manual presents distances and lengths in meters (As a
+reminder, one block is a one meter cube).
+
+Second, throughout this manual, diagrams will be provided to assist
+understanding. It's important to understand these diagrams and how to read
+them in order to understand what they are communicating.
+
+![Crossover design](./crossover.png)
+
+This is an example of the kind of diagrams that are often used to describe
+track layouts.
+
+In the background of the image, you can see a grid of
+squares. These squares represent 1m (1 block) in the world. Diagrams
+showing designs in the world will always be block aligned.
+
+On top of the background, there are several curves. These curves represent
+tracks. Because the curves are less than a block thick, they are gauge-
+agnostic. Actual track sizes vary by gauge, but with ELR track diagrams
+the curves should be taken as the center of tracks.
+
+Finally, on top of the curves there are several white arrows. These arrows
+represent signals. Each arrow points in the direction the signal should be
+facing, and is placed on the block the signal should be positioned at
+(with curved tracks this is more of an estimate). Additionally, track
+segments are coloured distinctly for each signal section they belong to.
+This visualization mirrors the visualization shown when holding a signal
+block.
