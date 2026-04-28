@@ -12,8 +12,3 @@ across the entire server.
 
 This text provides further information on the Company, as well as a copy
 of the ELR Manual in full. Read on for more.
-
-## Contents
-
-- [ELR Manual](./manual/index)
-- [About the Company](./about)
