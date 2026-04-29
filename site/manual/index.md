@@ -35,9 +35,9 @@ squares. These squares represent 1m (1 block) in the world. Diagrams
 showing designs in the world will always be block aligned.
 
 On top of the background, there are several curves. These curves represent
-tracks. Because the curves are less than a block thick, they are gauge-
-agnostic. Actual track sizes vary by gauge, but with ELR track diagrams
-the curves should be taken as the center of tracks.
+tracks. ELR uses standard-gauge rail on all non-specialty lines, so for
+readers wishing to use wide- or narrow-gauge tracks instead, the diagrams
+will not be block-accurate and must be scaled up.
 
 Finally, on top of the curves there are several white arrows. These arrows
 represent signals. Each arrow points in the direction the signal should be

@@ -15,7 +15,7 @@ Below is the design used for crossovers on ELR lines.
 
 This image shows a simple process for constructing such a crossover.
 
-![Crossover build](./crossover_build.gif)
+![Crossover build](./crossover.gif)
 
 ## Junctions
 
@@ -32,4 +32,4 @@ Below is the design of a 3-way junction.
 
 This image shows a process for constructing that junction.
 
-![Three-way junction build](./3_way_junction_build.gif)
+![Three-way junction build](./3_way_junction.gif)

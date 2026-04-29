@@ -37,6 +37,12 @@ main {
     width: 60%;
 }
 
+@media (max-width: 960px) {
+    main {
+        width: 90%;
+    }
+}
+
 img {
     display: block;
     width: 80%;
