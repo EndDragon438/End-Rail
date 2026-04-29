@@ -24,7 +24,6 @@ end
 -- to refuel if needed.
 function digRowAndReturn()
     for i = 1,7 do
-        print(i)
         turtle.dig()
         turtle.forward()
     end
@@ -98,19 +97,22 @@ function dig(dir)
         for y = 1, 6 do
             for x = 1, 11 do
                 digRowAndReturn()
-                turtle.turnLeft()
-                turtle.forward()
-                turtle.turnRight()
+                if x < 10 then
+                    turtle.turnLeft()
+                    turtle.forward()
+                    turtle.turnRight()
+                end
             end
-            if y ~= 6 then
+            if y < 5 then
                 turtle.turnRight()
-                for x = 1, 11 do
+                for x = 1, 10 do
                     turtle.forward()
                 end
                 turtle.turnLeft()
                 turtle.up()
             end
         end
+        turtle.down()
         counter = counter + 1
         print("Dug "..counter.." sections.")
     end

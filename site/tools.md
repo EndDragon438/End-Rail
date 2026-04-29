@@ -26,7 +26,7 @@ wget https://raw.githubusercontent.com/EndDragon438/End-Rail/refs/heads/main/too
 Then, run:
 
 ```
-run slope.lua <up|down>
+./slope.lua <up|down>
 ```
 
 Be sure to pass `up` or `down` as a parameter to tell the program which
