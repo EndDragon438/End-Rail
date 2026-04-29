@@ -15,13 +15,12 @@ the maximum allowed as per the ELR Manual.
 
 Usage:
 
-Place a mining turtle at the corner of your tunnels start, the top left
-corner for a downward mining turtle and the bottom left corner for an
-upward mining turtle.
+Place a mining turtle at the top left corner of your tunnels start. Fill
+the first slot of the mining turtle with coal or another fuel source.
 
 On your mining turtle run:
 ```
-wget 
+wget https://raw.githubusercontent.com/EndDragon438/End-Rail/refs/heads/main/tools/slope.lua
 ```
 
 Then, run:
@@ -32,3 +31,7 @@ run slope.lua <up|down>
 
 Be sure to pass `up` or `down` as a parameter to tell the program which
 way to dig.
+
+The turtle will run until it runs out of fuel or you stop it manually.
+The user should monitor the turtle to ensure it runs correctly and is not
+interrupted.
