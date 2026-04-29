@@ -11,3 +11,9 @@ along with other information about the Company.
 - Correct crossover diagram to be on-grid.
 - Double check the statement in the manual index that track diagrams are
 actually gauge-agnostic
+
+## Resources
+- http://www.railwaycodes.org.uk/line/diagrams0.shtm
+- https://www.openrailwaymap.org/
+- https://arema.org/AREMA_MBRR/AREMA_MBRR/AREMAStore/MRE.aspx (dl)
+- https://www.up.com/emp/engineering/apps/archives/standards/public/index.cfm (specifically turnouts)
