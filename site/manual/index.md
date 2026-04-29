@@ -46,3 +46,8 @@ facing, and is placed on the block the signal should be positioned at
 segments are coloured distinctly for each signal section they belong to.
 This visualization mirrors the visualization shown when holding a signal
 block.
+
+<!--
+TODO:
+- Section about block diagrams, e.g. the station one and potentially train ones.
+-->
