@@ -20,11 +20,18 @@ function refuel()
     return sucess
 end
 
+-- Digs until the block in front of the turtle is empty
+function digUntilClear()
+    while turtle.detect() do
+        turtle.dig()
+    end
+end
+
 -- Digs forward 7 blocks, then moves back to its starting position. Tries
 -- to refuel if needed.
 function digRowAndReturn()
     for i = 1,7 do
-        turtle.dig()
+        digUntilClear()
         turtle.forward()
     end
     for i = 1,7 do
@@ -34,17 +41,17 @@ end
 
 -- Digs a flat face. At the end, the turtle will be in the bottom right
 -- corner of the face.
-function digFace(dir)
+ function digFace(dir)
     -- if dir == up we have to dig 1 row above current
     -- if dir == down we'll have to dig an extra row down
-    turtle.dig()
+    digUntilClear()
     turtle.forward()
     turtle.turnRight()
     if dir == 'up' then
         turtle.digUp()
         turtle.up()
         for i = 1,10 do
-            turtle.dig()
+            digUntilClear()
             turtle.forward()
         end
         for i = 1, 10 do
@@ -55,7 +62,7 @@ function digFace(dir)
     
     for i = 1,5 do
         for j = 1, 10 do
-            turtle.dig()
+            digUntilClear()
             turtle.forward()
         end
         for j = 1, 10 do
@@ -71,7 +78,7 @@ function digFace(dir)
         turtle.digDown()
         turtle.down()
         for i = 1, 10 do
-            turtle.dig()
+            digUntilClear()
             turtle.forward()
         end
     else
@@ -97,7 +104,7 @@ function dig(dir)
         for y = 1, 6 do
             for x = 1, 11 do
                 digRowAndReturn()
-                if x < 10 then
+                if x < 11 then
                     turtle.turnLeft()
                     turtle.forward()
                     turtle.turnRight()
