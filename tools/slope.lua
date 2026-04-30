@@ -110,7 +110,7 @@ function dig(dir)
                     turtle.turnRight()
                 end
             end
-            if y < 5 then
+            if y < 6 then
                 turtle.turnRight()
                 for x = 1, 10 do
                     turtle.forward()
@@ -118,6 +118,9 @@ function dig(dir)
                 turtle.turnLeft()
                 turtle.up()
             end
+        end
+        for x = 1, 7 do
+            turtle.forward()
         end
         turtle.down()
         counter = counter + 1
