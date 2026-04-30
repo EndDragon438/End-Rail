@@ -1,5 +1,6 @@
 :root {
     --background-darker: #CCCCCC;
+    --background-lighter: #DDDDDD;
 }
 
 body {
@@ -47,6 +48,11 @@ img {
     display: block;
     width: 80%;
     margin: 0 auto;
+}
+
+code {
+    background-color: var(--background-lighter);
+    border-radius: 4px;
 }
 
 footer {

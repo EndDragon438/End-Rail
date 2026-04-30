@@ -19,13 +19,14 @@ Place a mining turtle at the top left corner of your tunnels start. Fill
 the first slot of the mining turtle with coal or another fuel source.
 
 On your mining turtle run:
-```
+
+```shell
 wget https://raw.githubusercontent.com/EndDragon438/End-Rail/refs/heads/main/tools/slope.lua
 ```
 
 Then, run:
 
-```
+```shell
 ./slope.lua <up|down>
 ```
 

@@ -8,7 +8,7 @@ of reference for all subjects the Manual covers.
 
 ## Table of Contents
 
-- [0: Index](./index)
+- [0: Index](./)
 - [1: Trains](./trains)
 - [2: Tracks](./tracks)
 
@@ -47,7 +47,11 @@ segments are coloured distinctly for each signal section they belong to.
 This visualization mirrors the visualization shown when holding a signal
 block.
 
-<!--
-TODO:
-- Section about block diagrams, e.g. the station one and potentially train ones.
--->
+![Tunnel height diagram](./tunnel_height.png)
+
+This is an example of a cross-section diagram.
+
+The green is used for the background. Red is used for solid blocks. In
+some of these diagrams, tracks will also be included, like in this one,
+to show where tracks are placed in this context. Additionally, stripes
+in gray and white may be used for measurement.

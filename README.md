@@ -9,6 +9,8 @@ along with other information about the Company.
 
 ## TODO
 - Map, Signals, Stations, Constraints, Styles
+- Tools: Station manager, Map display
+- Try to figure out how to get automatically generated links for headers with Jekyll (theme?? plugin??)
 
 ## Resources
 - http://www.railwaycodes.org.uk/line/diagrams0.shtm
