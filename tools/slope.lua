@@ -122,7 +122,9 @@ function dig(dir)
         for x = 1, 7 do
             turtle.forward()
         end
-        turtle.down()
+        if dir == "down" then
+            turtle.down()
+        end
         counter = counter + 1
         print("Dug "..counter.." sections.")
     end

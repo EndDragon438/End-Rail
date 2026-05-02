@@ -1,7 +1,7 @@
 -- This program renders a static map of train stations and connecting
 -- routes. In the future, the map will update live with train locations.
 
--- [[ Description of the structure for the array of stations
+--[[ Description of the structure for the array of stations
 {
     {
         name = "Example Station",
@@ -15,4 +15,3 @@
     }
 }
 ]]
-
