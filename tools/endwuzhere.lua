@@ -19,11 +19,15 @@ end
 -- @param t time factor [0.0, 1.0]
 -- @return HSV color {h, s, v}
 local function lerp(stops, t)
-    t = t * #stops
+    t = t * (#stops - 1)
+
+    local first = stops[math.floor(t) + 1]
+    local second = stops[math.ceil(t) + 1]
+
     return {
-        h = stops[math.floor(t)].h * (t % 1) + stops[math.floor(t) + 1].h * (1 - (t % 1)),
-        s = stops[math.floor(t)].s * (t % 1) + stops[math.floor(t) + 1].s * (1 - (t % 1)),
-        v = stops[math.floor(t)].v * (t % 1) + stops[math.floor(t) + 1].v * (1 - (t % 1))
+        h = first.h + (second.h - first.h) * (t % 1),
+        s = first.s + (second.s - first.s) * (t % 1),
+        v = first.v + (second.v - first.v) * (t % 1)
     }
 end
 
