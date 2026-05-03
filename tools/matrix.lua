@@ -3,8 +3,6 @@
 -- Author: end draconis
 -- SPDX-License-Identifier: CC-BY-4.0
 
-local args = {...}
-
 --- Adds two 2D matrices together.
 -- @param left 2D matrix. Width must be equal to the height of the right matrix.
 -- @param right 2D matrix. Width must be equal to the height of the left matrix.
