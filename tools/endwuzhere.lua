@@ -39,18 +39,20 @@ local function main()
     monitor.setCursorPos((w - #text) / 2, 1)
     monitor.setBackgroundColor(colors.red)
     monitor.setTextColor(colors.blue)
-    local rainbow = {
-        {h = 0, s = 1, v = 1},
-        {h = 60, s = 1, v = 1},
-        {h = 115, s = 1, v = 1},
-        {h = 240, s = 1, v = 1},
-        {h = 360, s = 1, v = 1}
-    }
     
-    local trans = {
-        {h = 196, s = .63, v = 98},
-        {h = 348, s = .31, v = 96},
-        {h = 0, s = 0, v = 1}
+    local gradients = {
+        rainbow = {
+            {h = 0, s = 1, v = 1},
+            {h = 60, s = 1, v = 1},
+            {h = 115, s = 1, v = 1},
+            {h = 240, s = 1, v = 1},
+            {h = 360, s = 1, v = 1}
+        },
+        trans = {
+            {h = 196, s = .63, v = 98},
+            {h = 348, s = .31, v = 96},
+            {h = 0, s = 0, v = 1}
+        }
     }
 
     local time = 0
@@ -60,7 +62,7 @@ local function main()
         monitor.clear()
         monitor.setCursorPos((w - #text) / 2, height)
         
-        local col = lerp(args[1] or rainbow, time)
+        local col = lerp(gradients[args[1]] or gradients.rainbow, time)
         local bgCol = color.hsv_to_rgb(col.h, col.s, col.v)
         local txtCol = color.hsv_to_rgb((col.h + 180) % 360, col.s, col.v)
         
