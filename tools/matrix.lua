@@ -57,16 +57,16 @@ end
 -- @return 2D matrix the product of the two matrices.
 -- @raise 'Matrix sizes do not match'
 function multiplyMatrices(left, right)
-    if #left ~= #right[1] then
-        error("Matrix sizes do not match")
+    if #left[1] ~= #right then
+        error("Matrix sizes do not match\nA: " .. #left .. "x" .. #left[1] .. "\nB: " .. #right .. "x" .. #right[1])
     end
     
     local temp = {}
-    for i = 1, #left[1] do
+    for i = 1, #left do
         temp[i] = {}
-        for j = 1, #right do
+        for j = 1, #right[1] do
             local sum = 0
-            for k = 1, #left do
+            for k = 1, #left[1] do
                 sum = sum + left[i][k] * right[k][j]
             end
             temp[i][j] = sum
@@ -91,28 +91,4 @@ function multiplyScalar(num, matrix)
     return temp
 end
 
-if args[1] == "test" then
-    local function printMatrix(matrix)
-        for i = 1, #matrix do
-            for j = 1, #matrix[i] do
-                io.write(matrix[i][j] .. "  ")
-            end
-            io.write("\n")
-        end
-        io.write("\n")
-    end
-    
-    local A = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
-    local B = {{9, 8, 7}, {6, 5, 4}, {3, 2, 1}}
-    local I = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}
-    local O = {{0, 0, 0}, {0, 0 ,0}, {0, 0, 0}}
-    
-    printMatrix(multiply(A, I))
-    printMatrix(multiply(A, O))
-    printMatrix(multiply(A, B))
-    printMatrix(add(A, I))
-    printMatrix(add(A, O))
-    printMatrix(add(A, B))
-    printMatrix(transpose(I))
-    printMatrix(transpose(A))
-end
+return {add = add, transpose = transpose, multiply = multiply}
