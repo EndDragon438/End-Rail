@@ -4,10 +4,10 @@
 -- SPDX-License-Identifier: CC-BY-4.0
 
 --- Converts an HSV color into an RGB one.
--- @param h hue in degrees [0...360]
--- @param s saturation [0...1]
--- @param v value [0...1]
--- @return {r, g, b} table
+-- @param h hue in degrees [0, 360]
+-- @param s saturation [0.0, 1.0]
+-- @param v value [0.0, 1.0]
+-- @return {r [0, 255], g [0, 255], b [0, 255]} table
 local function hsv_to_rgb(h, s, v)
     -- https://en.wikipedia.org/wiki/HSL_and_HSV#HSV_to_RGB
     local chroma = v * s
@@ -37,10 +37,10 @@ local function hsv_to_rgb(h, s, v)
 end
 
 --- Converts an RGB color into an HSV one.
--- @param r red channel [0...255]
--- @param g green channel [0...255]
--- @param b blue channel [0...255]
--- @return {h [0...360], s [0...1], v [0...1]} table
+-- @param r red channel [0, 255]
+-- @param g green channel [0, 255]
+-- @param b blue channel [0, 255]
+-- @return {h [0, 360], s [0.0, 1.0], v [0.0, 1.0]} table
 local function rgb_to_hsv(r, g, b)
     -- convert to [0...1]
     local r = r / 255
@@ -72,6 +72,42 @@ local function rgb_to_hsv(r, g, b)
     end
     
     return {h = hue, s = s, v = xmax}
+end
+
+--- Converts an XYZ color into an RGB one.
+-- @param x channel [0.0, 1.0]
+-- @param y channel [0.0, 1.0]
+-- @param z channel [0.0, 1.0]
+-- @return {r [0, 255]], g [0, 255]], b [0, 255]]} table
+local function xyz_to_rgb(x, y, z)
+
+end
+
+--- Converts an RGB color into an XYZ one.
+-- @param r red channel [0, 255]
+-- @param g green channel [0, 255]
+-- @param b blue channel [0, 255]
+-- @return {x [0, 360], y [0.0, 1.0], z [0.0, 1.0]} table
+local function rgb_to_xyz(r, g, b)
+
+end
+
+--- Converts a LAB color into an RGB one.
+-- @param l channel [0, 100]
+-- @param a channel [0.0, 1.0]
+-- @param b channel [0.0, 1.0]
+-- @return {r [0, 255]], g [0, 255]], b [0, 255]]} table
+local function lab_to_rgb(l, a, b)
+
+end
+
+--- Converts an RGB color into a LAB one.
+-- @param r red channel [0, 255]
+-- @param g green channel [0, 255]
+-- @param b blue channel [0, 255]
+-- @return {l [0, 100], a [0.0, 1.0], b [0.0, 1.0]} table
+local function rgb_to_lab(r, g, b)
+
 end
 
 return { hsv_to_rgb = hsv_to_rgb, rgb_to_hsv = rgb_to_hsv }
