@@ -19,11 +19,16 @@ local function main()
     print("hehehehehe")
     print("hold Ctrl+T to terminate")
     
-    local str = strMult(text, math.floor(w / #text))
+    monitor.setCursorPos(1, (h - #text) / 2)
+    monitor.setBackgroundColor(colors.red)
+    monitor.setTextColor(colors.blue)
 
     local hue = 0
-    local posCounter = 0
+    local height = 1
     while true do
+        -- TODO: vertically scrolling text, background colour shifting. implement a lerp function with color stops
+        monitor.clearLine()
+        monitor.setCursorPos(height, (h - #text) / 2)
         local bgCol = color.hsv_to_rgb(hue, 1, 1)
         bgCol.r = bgCol.r / 255
         bgCol.g = bgCol.g / 255
@@ -37,15 +42,10 @@ local function main()
         monitor.setPaletteColor(colors.red, colors.packRGB(bgCol.r, bgCol.g, bgCol.b))
         monitor.setPaletteColor(colors.blue, colors.packRGB(txtCol.r, txtCol.g, txtCol.b))
         
-        if posCounter == 0 then
-            monitor.clear()
-        end
-        
-        monitor.setCursorPos(posCounter % w, math.floor(posCounter / w))
-        monitor.blit(string.sub(text, posCounter % #text - 1, posCounter % #text), colors.toBlit(colors.red), colors.toBlit(colors.blue))
+        monitor.write(text)
         
         hue = hue + 1 % 360
-        posCounter = (posCounter + 1) % (w * h)
+        height = height + 1 % h
     end
 end
 
