@@ -2,9 +2,10 @@
 
 local color = require("color")
 local monitor = peripheral.find("monitor")
+local args = {...}
 local w, h = monitor.getSize()
 
-local text = " end wuz here "
+local text = "end wuz here"
 
 local function strMult(str, mult)
     local temp = str
@@ -35,7 +36,7 @@ local function main()
     print("hehehehehe")
     print("hold Ctrl+T to terminate")
     
-    monitor.setCursorPos(1, (h - #text) / 2)
+    monitor.setCursorPos((w - #text) / 2, 1)
     monitor.setBackgroundColor(colors.red)
     monitor.setTextColor(colors.blue)
     local rainbow = {
@@ -45,14 +46,21 @@ local function main()
         {h = 240, s = 1, v = 1},
         {h = 360, s = 1, v = 1}
     }
+    
+    local trans = {
+        {h = 196, s = .63, v = 98},
+        {h = 348, s = .31, v = 96},
+        {h = 0, s = 0, v = 1}
+    }
 
     local time = 0
     local height = 1
     while true do
-        monitor.clearLine()
-        monitor.setCursorPos(height, (h - #text) / 2)
+        os.sleep(0.05)
+        monitor.clear()
+        monitor.setCursorPos((w - #text) / 2, height)
         
-        local col = lerp(rainbow, time)
+        local col = lerp(args[1] or rainbow, time)
         local bgCol = color.hsv_to_rgb(col.h, col.s, col.v)
         local txtCol = color.hsv_to_rgb((col.h + 180) % 360, col.s, col.v)
         
@@ -62,7 +70,7 @@ local function main()
         monitor.write(text)
         
         time = (time + 0.01) % 1
-        height = height + 1 % h
+        height = (height + 1) % h
     end
 end
 
