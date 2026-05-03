@@ -1,11 +1,10 @@
 -- hi there :3
 
-local color = require("colors")
+local color = require("color")
 local monitor = peripheral.find("monitor")
 local w, h = monitor.getSize()
 
-local text = "end wuz here "
-text = text * (math.floor(w / #text))
+local text = " end wuz here "
 
 local function strMult(str, mult)
     local temp = str
@@ -19,9 +18,6 @@ end
 local function main()
     print("hehehehehe")
     print("hold Ctrl+T to terminate")
-
-    monitor.setBackgroundColor(colors.red)
-    monitor.setTextColor(colors.blue)
     
     local str = strMult(text, math.floor(w / #text))
 
@@ -46,10 +42,10 @@ local function main()
         end
         
         monitor.setCursorPos(posCounter % w, math.floor(posCounter / w))
-        monitor.write(string.sub(text, posCounter % #text - 1, posCounter % text))
+        monitor.blit(string.sub(text, posCounter % #text - 1, posCounter % #text), colors.toBlit(colors.red), colors.toBlit(colors.blue))
         
         hue = hue + 1 % 360
-        posCounter = posCounter + 1 % (w * h)
+        posCounter = (posCounter + 1) % (w * h)
     end
 end
 
