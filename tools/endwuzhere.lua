@@ -15,6 +15,18 @@ local function strMult(str, mult)
     return temp
 end
 
+-- @param stops array of at least 2 HSV colors {h, s, v}
+-- @param t time factor [0.0, 1.0]
+-- @return HSV color {h, s, v}
+local function lerp(stops, t)
+    t = t * #stops
+    return {
+        h = stops[math.floor(t)].h * (t % 1) + stops[math.floor(t) + 1].h * (1 - (t % 1)),
+        s = stops[math.floor(t)].s * (t % 1) + stops[math.floor(t) + 1].s * (1 - (t % 1)),
+        v = stops[math.floor(t)].v * (t % 1) + stops[math.floor(t) + 1].v * (1 - (t % 1))
+    }
+end
+
 local function main()
     print("hehehehehe")
     print("hold Ctrl+T to terminate")
@@ -22,29 +34,30 @@ local function main()
     monitor.setCursorPos(1, (h - #text) / 2)
     monitor.setBackgroundColor(colors.red)
     monitor.setTextColor(colors.blue)
+    local rainbow = {
+        {h = 0, s = 1, v = 1},
+        {h = 60, s = 1, v = 1},
+        {h = 115, s = 1, v = 1},
+        {h = 240, s = 1, v = 1},
+        {h = 360, s = 1, v = 1}
+    }
 
-    local hue = 0
+    local time = 0
     local height = 1
     while true do
-        -- TODO: vertically scrolling text, background colour shifting. implement a lerp function with color stops
         monitor.clearLine()
         monitor.setCursorPos(height, (h - #text) / 2)
-        local bgCol = color.hsv_to_rgb(hue, 1, 1)
-        bgCol.r = bgCol.r / 255
-        bgCol.g = bgCol.g / 255
-        bgCol.r = bgCol.b / 255
         
-        local txtCol = color.hsv_to_rgb(hue + 180 % 360, 1, 1)
-        txtCol.r = txtCol.r / 255
-        txtCol.g = txtCol.g / 255
-        txtCol.r = txtCol.b / 255
+        local col = lerp(rainbow, time)
+        local bgCol = color.hsv_to_rgb(col.h, col.s, col.v)
+        local txtCol = color.hsv_to_rgb((col.h + 180) % 360, col.s, col.v)
         
         monitor.setPaletteColor(colors.red, colors.packRGB(bgCol.r, bgCol.g, bgCol.b))
         monitor.setPaletteColor(colors.blue, colors.packRGB(txtCol.r, txtCol.g, txtCol.b))
         
         monitor.write(text)
         
-        hue = hue + 1 % 360
+        time = (time + 0.01) % 1
         height = height + 1 % h
     end
 end

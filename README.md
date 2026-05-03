@@ -11,6 +11,8 @@ along with other information about the Company.
 - Map, Signals, Stations, Constraints, Styles
 - Tools: Station manager, Map display
 - Try to figure out how to get automatically generated links for headers with Jekyll (theme?? plugin??)
+- Redesign `color` library to just export functions for getting a specific color space. i.e., `hsv({r, g, b})`.
+Handle all the conversions within the converter
 
 ## Resources
 - http://www.railwaycodes.org.uk/line/diagrams0.shtm

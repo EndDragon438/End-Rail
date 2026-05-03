@@ -53,6 +53,7 @@ img {
 code {
     background-color: var(--background-lighter);
     border-radius: 4px;
+    padding: 2px;
 }
 
 footer {

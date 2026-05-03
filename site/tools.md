@@ -36,3 +36,30 @@ way to dig.
 The turtle will run until it runs out of fuel or you stop it manually.
 The user should monitor the turtle to ensure it runs correctly and is not
 interrupted.
+
+## Libraries
+
+Libraries for usage by other programs. Usually licensed under a CC-BY-4.0,
+so have fun with them!
+
+### Color
+
+Utilities for converting between color spaces. Currently supports sRGB,
+HSV, XYZ, and LAB.
+
+Usage is extensively documented within the file.
+
+```shell
+wget https://raw.githubusercontent.com/EndDragon438/End-Rail/refs/heads/main/tools/color.lua
+```
+
+### Matrix
+
+Utilities for working with matrices. Includes addition, multiplication,
+and transpose operations.
+
+Usage is extensively documented within the file.
+
+```shell
+wget https://raw.githubusercontent.com/EndDragon438/End-Rail/refs/heads/main/tools/matrix.lua
+```
