@@ -5,5 +5,5 @@ trains and train design. This section contains standards for train
 design and construction.
 
 # Table of Contents
-- [Constraints](./trains-constraints)
-- [Styles](./trains-styles)
+- [Constraints](./constraints)
+- [Styles](./styles)

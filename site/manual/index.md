@@ -9,8 +9,8 @@ of reference for all subjects the Manual covers.
 ## Table of Contents
 
 - [0: Index](./)
-- [1: Trains](./trains)
-- [2: Tracks](./tracks)
+- [1: Trains](./trains/)
+- [2: Tracks](./tracks/)
 
 ## Reading the Manual
 
@@ -25,7 +25,7 @@ Second, throughout this manual, diagrams will be provided to assist
 understanding. It's important to understand these diagrams and how to read
 them in order to understand what they are communicating.
 
-![Crossover design](./crossover.png)
+![Crossover design](./tracks/crossover.png)
 
 This is an example of the kind of diagrams that are often used to describe
 track layouts.
@@ -47,7 +47,7 @@ segments are coloured distinctly for each signal section they belong to.
 This visualization mirrors the visualization shown when holding a signal
 block.
 
-![Tunnel height diagram](./tunnel_height.png)
+![Tunnel height diagram](./tracks/tunnel_height.png)
 
 This is an example of a cross-section diagram.
 
