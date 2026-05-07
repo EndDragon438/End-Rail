@@ -46,13 +46,14 @@ main {
 
 img {
     display: block;
-    width: 80%;
+    max-width: 80%;
     margin: 0 auto;
 }
 
 code {
     background-color: var(--background-lighter);
     border-radius: 4px;
+    padding: 2px;
 }
 
 footer {
