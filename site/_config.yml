@@ -1,2 +1,3 @@
+baseurl: "/End-Rail"
 kramdown:
     header_links: true
