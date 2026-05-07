@@ -1,9 +1,9 @@
-# Track Intersections
+# 2.2: Track Intersections
 
 This section covers intersections of tracks, including junctions,
 crossovers, and others.
 
-## Crossovers
+## 2.2.1: Crossovers {#m-2-2-1}
 
 Crossovers allow a train traveling in one direction to move to the track
 going in the opposite direction, effectively turning around while keeping
@@ -17,7 +17,7 @@ This image shows a simple process for constructing such a crossover.
 
 ![Crossover build](./crossover.gif)
 
-## Junctions
+## 2.2.2: Junctions {#m-2-2-2}
 
 Junctions merge two or more lines together, allowing trains to cross to
 other lines. These are used when joining side routes with the main line,

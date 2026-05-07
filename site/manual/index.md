@@ -1,4 +1,4 @@
-# The ELR Manual
+# 0: The ELR Manual
 
 The ELR Manual is a comprehensive collection of standards for all things
 train and track. The Manual includes descriptions, measurements, and
@@ -12,7 +12,7 @@ of reference for all subjects the Manual covers.
 - [1: Trains](./trains/)
 - [2: Tracks](./tracks/)
 
-## Reading the Manual
+## 0.1 Reading the Manual {#m-0-1}
 
 This manual incorporates several patterns that the reader should be aware
 of.

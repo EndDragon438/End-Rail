@@ -1,4 +1,4 @@
-# Train Styles
+# 1.2: Train Styles
 
 The ELR Manual is focused on the practicality of design for rail, and does
 not provide aesthetic guidance. However, there are some standard styles in
@@ -6,7 +6,7 @@ use by various organizations and individuals on ELR lines, including ELR
 itself. This section of the manual documents these styles, not for the
 purpose of standardization, but rather to inform, and perhaps, to inspire.
 
-## ELR
+## 1.2.1: ELR {#m-1-2-1}
 
 ### Palette
 

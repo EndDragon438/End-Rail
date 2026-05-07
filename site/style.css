@@ -44,6 +44,15 @@ main {
     }
 }
 
+main a, main a:visited {
+    color: #0000EE;
+    text-decoration: none;
+}
+
+main a:hover {
+    text-decoration: underline;
+}
+
 img {
     display: block;
     max-width: 80%;

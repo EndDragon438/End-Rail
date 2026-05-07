@@ -1,9 +1,9 @@
-# Track Stations
+# 2.4: Track Stations
 
 This section describes how to design stations for ELR lines. There are two
 types of stations used along ELR lines: dedicated and inline stations.
 
-## Dedicated Stations
+## 2.4.1: Dedicated Stations {#m-2-4-1}
 
 Dedicated stations are the most common type of station, and the most
 versatile.
@@ -11,7 +11,7 @@ versatile.
 A station which accepts freight should have its interfaces placed 17 <!-- 19 blocks including both station and interfaces, 17 empty (rail) in between them -->
 blocks away from the station.
 
-## Inline Stations
+## 2.4.2: Inline Stations {#m-2-4-2}
 
 Inline stations are more uncommon, and for good reason. They are added
 onto the line itself, which comes with several problems, most notably of

@@ -1,14 +1,14 @@
-# Track Lines
+# 2.1: Track Lines
 
 This section describes general standards for ELR compatible tracks.
 
-## Sizing
+## 2.1.1: Sizing {#m-2-1-1}
 
 For all non-specialized rail, ELR uses medium gauge rail (3m wide). Style
 is not standardized; any medium gauge rail will be compatible. Rail should
 always have a 1m gap on either side, and when two lines are placed next to
 each other, an additional 1m should allocated in between them. These gaps
-may be lowered if desired, e.g. [for spawnproofing](#mob-protection). Below is a
+may be lowered if desired, e.g. [for spawnproofing](#m-2-1-5). Below is a
 diagram displaying this standard.
 
 ![Main line design](./main_line.png)
@@ -18,13 +18,13 @@ axis), they may be diagonal or even curved, but the space between lines
 should be preserved at all times. If you are unsure if you've given enough
 space, err on the side of caution and add some more.
 
-## Positioning
+## 2.1.2: Positioning {#m-2-1-2}
 
 Some ELR lines have specific position requirements to account for their
 environment. This section will also list standards for specific terrain,
 and some notable stations.
 
-Most importantly, in the Nether ELR lines run at Y=7. This is done to
+Most importantly, in the Nether, ELR lines run at Y=7. This is done to
 reduce the burden of protecting the line from the hostile fauna and
 terrain which is common in the Nether. To match this height specification,
 Overworld-side connections to Nether lines should also be at a similar
@@ -34,7 +34,7 @@ but this guidance is dependant on how many portals are present in the area.
 For an example of this kind of Nether-Overworld connection, End Station
 has a Nether connection and is fully built at Y=6.
 
-## Slopes
+## 2.1.3: Slopes {#m-2-1-3}
 
 The grade of ELR slopes should be no more than 12.5% (or 1 meter up for
 every 8 meters over). 
@@ -42,9 +42,10 @@ every 8 meters over).
 ![12.5% grade track](./track_grade.png)
 
 Slopes can be built in a straight, as in the above example, or in a [spiral](https://en.wikipedia.org/wiki/Spiral_(railway)),
-or [zig-zag](https://en.wikipedia.org/wiki/Zig_zag_(railway)).
+or [zig-zag](https://en.wikipedia.org/wiki/Zig_zag_(railway)). For digging
+a sloped tunnel, ELR provides an excavation program for a mining turtle [here](../../tools#slope).
 
-## Tunnels
+## 2.1.4: Tunnels {#m-2-1-4}
 
 When building a tunnel, the roof of the tunnel must be a minimum of 5.5m
 above the floor.
@@ -54,7 +55,7 @@ above the floor.
 This cross-section shows a tunnel of minimum height. Higher roofs are also
 acceptable.
 
-## Mob Protection
+## 2.1.5: Mob Protection {#m-2-1-5}
 
 All lines should be protected from mobs, hostile mobs especially but
 inclusive of all mobs. It's important lines remain clear of obstacles,
@@ -82,7 +83,7 @@ Here's an example cross-section of what this could look like.
 ![Nether spawnproofing lowered design](./nether_spawnproofing.png)
 
 The most important thing to ensure is that Ghasts cannot spawn. In the
-Nether, Ghasts are one of the biggest threat to a railway due to them
+Nether, Ghasts are one of the biggest threats to a railway due to them
 being able to break blocks.
 
 If you must travel on the surface of the Nether, similar guidelines apply.
