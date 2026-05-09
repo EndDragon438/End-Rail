@@ -4,8 +4,8 @@ This section describes general standards for ELR compatible tracks.
 
 ## 2.1.1: Sizing {#m-2-1-1}
 
-For all non-specialized rail, ELR uses medium gauge rail (3m wide). Style
-is not standardized; any medium gauge rail will be compatible. Rail should
+For all non-specialized rail, ELR uses standard gauge rail (3m wide). Style
+is not standardized; any standard gauge rail will be compatible. Rail should
 always have a 1m gap on either side, and when two lines are placed next to
 each other, an additional 1m should allocated in between them. These gaps
 may be lowered if desired, e.g. [for spawnproofing](#m-2-1-5). Below is a
@@ -17,6 +17,10 @@ Lines do not necessarily have to be axis-aligned (running along the X or Z
 axis), they may be diagonal or even curved, but the space between lines
 should be preserved at all times. If you are unsure if you've given enough
 space, err on the side of caution and add some more.
+
+Keep in mind that on ELR lines trains usually travel on the right (like
+American cars). This may temporarily change through the use of a scissor
+crossover, most commonly at a station, but is the standard for lines.
 
 ## 2.1.2: Positioning {#m-2-1-2}
 
@@ -33,6 +37,8 @@ looser tolerances; building within 16m vertically should be comfortable,
 but this guidance is dependant on how many portals are present in the area.
 For an example of this kind of Nether-Overworld connection, End Station
 has a Nether connection and is fully built at Y=6.
+
+In the Overworld, tracks should be placed a minimum of 4m above water.
 
 ## 2.1.3: Slopes {#m-2-1-3}
 
@@ -64,8 +70,9 @@ especially living ones, to avoid casualties.
 In the Overworld, this can be accomplished by a combination of lighting
 and fencing. Lighting to prevent hostile mob spawns, and fencing to
 prevent other mobs wandering onto the tracks. Fencing should be at least
-three blocks higher than the tracks. If a line is underground, it should
-already be enclosed and does not need further fencing.
+3m higher than the tracks. If a line is underground, it should
+already be enclosed and does not need further fencing. If your line is
+running over a body of fluid, fences are not necessary.
 
 In the Nether, mob protection is much more difficult. Lighting is no
 longer an effective method of mob proofing, so we must turn to

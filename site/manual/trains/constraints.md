@@ -17,7 +17,7 @@ stations. To play it safe, stay under 50m long.
 ## 1.1.2 Storage Interfaces {#m-1-1-2}
 
 In order to maintain compatibility with [ELR stations](../tracks/stations#m-2-4-1),
-a trains storage interfaces should lie 18 blocks from the station it is
+a trains storage interfaces should lie 18m from the station it is
 stopped at.
 
 ![Station-interface distance](../tracks/station_spacing.png)
