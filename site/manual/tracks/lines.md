@@ -74,11 +74,9 @@ present higher in the Nether (lava, Ghasts) and so usually are enclosed
 within tunnels. This prevents mobs from wandering onto the tracks
 externally, but does not prevent spawns directly on the tracks. For this
 purpose, another method of spawnproofing is necessary. ELR recommends
-using slabs (buttons are also an option, but have twice the material cost).
-You may also drop the level of the blocks surrounding rails in order to
-lower spawnproofing blocks.
+using slabs, as they may be integrated into the rails for a pleasing look.
 
-Here's an example cross-section of what this could look like.
+Here's an example of what this could look like.
 
 ![Nether spawnproofing lowered design](./nether_spawnproofing.png)
 

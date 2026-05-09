@@ -8,7 +8,7 @@ includes the End of the Line Rail Company Manual, for trains and railroads,
 along with other information about the Company.
 
 ## TODO
-- Map, Signals, Stations, Constraints, Styles
+- Map, Signals
 - Tools: Station manager, Map display
 - Try to figure out how to get automatically generated links for headers with Jekyll (theme?? plugin??)
 - Redesign `color` library to just export functions for getting a specific color space. i.e., `hsv({r, g, b})`.
