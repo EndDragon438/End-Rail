@@ -3,15 +3,29 @@
 -- Author: end draconis
 -- SPDX-License-Identifier: CC-BY-4.0
 
+--- Check if two tables have the same keys
+-- @param tb1 the first table
+-- @param tb2 the second table
+-- @return true if every value of tb1 is present in the keys of tb2, false otherwise
+local function keyEq(tb1, tb2)
+    local eq = true
+    for k2, _ in pairs(tb2) do
+        for _, v1 in pairs(tb1) do
+            if v1 == k2 then goto continue end
+        end
+        eq = false
+        ::continue::
+    end
+    return eq
+end
+    
 --- Converts an HSV color into an RGB one.
--- @param h hue in degrees [0, 360]
--- @param s saturation [0.0, 1.0]
--- @param v value [0.0, 1.0]
+-- @param table HSV color {h[0.0, 1.0],s[0.0, 1.0],v[0.0, 1.0]}
 -- @return {r [0.0, 1.0], g [0.0, 1.0], b [0.0, 1.0]} table
-local function hsv_to_rgb(h, s, v)
+local function hsv_to_rgb(t)
     -- https://en.wikipedia.org/wiki/HSL_and_HSV#HSV_to_RGB
-    local chroma = v * s
-    local h2 = h / 60
+    local chroma = t.v * t.s
+    local h2 = t.h / 60 * 360
     local x = chroma * (1 - math.abs(h2 % 2 - 1))
     local initial
     if h2 < 1 then
@@ -28,7 +42,7 @@ local function hsv_to_rgb(h, s, v)
         initial = {r = chroma, g = 0, b = x}
     end
     
-    local m = v - chroma
+    local m = t.v - chroma
     initial.r = initial.r + m
     initial.g = initial.g + m
     initial.b = initial.b + m
@@ -37,26 +51,24 @@ local function hsv_to_rgb(h, s, v)
 end
 
 --- Converts an RGB color into an HSV one.
--- @param r red channel [0.0, 1.0]
--- @param g green channel [0.0, 1.0]
--- @param b blue channel [0.0, 1.0]
--- @return {h [0, 360], s [0.0, 1.0], v [0.0, 1.0]} table
-local function rgb_to_hsv(r, g, b)
+-- @param table RGB color {r[0.0, 1.0],g[0.0, 1.0],b[0.0, 1.0]}
+-- @return {h [0.0, 1.0], s [0.0, 1.0], v [0.0, 1.0]} table
+local function rgb_to_hsv(t)
     -- https://en.wikipedia.org/wiki/HSL_and_HSV#From_RGB
-    local xmax = math.max(r, g, b) -- also equiv to V
-    local xmin = math.min(r, g, b)
+    local xmax = math.max(t.r, t.g, t.b) -- also equiv to V
+    local xmin = math.min(t.r, t.g, t.b)
     
     local chroma = xmax - xmin
     
     local hue
     if chroma == 0 then
         hue = 0
-    elseif xmax == r then
-        hue = 60 * (((g - b) / chroma) % 6)
-    elseif xmax == g then
-        hue = 60 * (((b - r) / chroma) + 2)
+    elseif xmax == t.r then
+        hue = 60 * (((t.g - t.b) / chroma) % 6)
+    elseif xmax == t.g then
+        hue = 60 * (((t.b - t.r) / chroma) + 2)
     else
-        hue = 60 * (((r - g) / chroma) + 4)
+        hue = 60 * (((t.r - t.g) / chroma) + 4)
     end
     
     local s
@@ -66,21 +78,19 @@ local function rgb_to_hsv(r, g, b)
         s = chroma / xmax
     end
     
-    return {h = hue, s = s, v = xmax}
+    return {h = hue / 360, s = s, v = xmax}
 end
 
 --- Converts an XYZ color into an RGB one. Requires the matrix library as well.
--- @param x channel [0.0, 1.0]
--- @param y channel [0.0, 1.0]
--- @param z channel [0.0, 1.0]
+-- @param table XYZ color {x[0.0, 1.0],y[0.0, 1.0],z[0.0, 1.0]}
 -- @return {r [0.0, 1.0]], g [0.0, 1.0]], b [0.0, 1.0]]} table
-local function xyz_to_rgb(x, y, z)
+local function xyz_to_rgb(t)
     local matrix = require("matrix")
     -- Transformation matrix we'll be using (D65). actually M-inverse but whatever
     local M = { {3.2404542, -1.5371385, -0.4985314},
                 {-0.9692660, 1.8760108, 0.0415560},
                 {0.0556434, -0.2040259, 1.0572252}}
-    local vec = {{x}, {y}, {z}}
+    local vec = {{t.x}, {t.y}, {t.z}}
     local rgb = matrix.multiply(M, vec)
     rgb = {r = rgb[1][1], g = rgb[2][1], b = rgb[3][1]}
     
@@ -92,16 +102,14 @@ local function xyz_to_rgb(x, y, z)
 end
 
 --- Converts an RGB color into an XYZ one. Requires the matrix library as well.
--- @param r red channel [0.0, 1.0]
--- @param g green channel [0.0, 1.0]
--- @param b blue channel [0.0, 1.0]
+-- @param table RGB color {r[0.0, 1.0],g[0.0, 1.0],b[0.0, 1.0]}
 -- @return {x [0.0, 1.0], y [0.0, 1.0], z [0.0, 1.0]} table
-local function rgb_to_xyz(r, g, b)
+local function rgb_to_xyz(t)
     local matrix = require("matrix")
     -- Transformation matrix we'll be using (D65)
     local M = {{0.4124564, 0.3575761, 0.1804375}, {0.2126729, 0.7151522, 0.0721750}, {0.0193339, 0.1191920, 0.9503041}}
     
-    local im = {{r}, {g}, {b}}
+    local im = {{t.r}, {t.g}, {t.b}}
     
     if im[1][1] <= 0.04045 then im[1][1] = im[1][1] / 12.92 else im[1][1] = ((im[1][1] + 0.055) / 1.055)^2.4 end
     if im[2][1] <= 0.04045 then im[2][1] = im[2][1] / 12.92 else im[2][1] = ((im[2][1] + 0.055) / 1.055)^2.4 end
@@ -113,16 +121,14 @@ local function rgb_to_xyz(r, g, b)
 end
 
 --- Converts a LAB color into an XYZ one.
--- @param l lightness channel [0, 100]
--- @param a channel [-128, 127]
--- @param b channel [-128, 127]
+-- @param table LAB color {l[0, 100],a[-128, 127],b[-128, 127]}
 -- @return {x [0.0, 1.0], y [0.0, 1.0], z [0.0, 1.0]} table
-local function lab_to_xyz(l, a, b)
+local function lab_to_xyz(t)
     local ref = {x = 95.047, y = 100, z = 108.883}
     local im = {}
-    im.y = (l + 16) / 116
-    im.x = a / 500 + im.y
-    im.z = im.y - (b / 200)
+    im.y = (t.l + 16) / 116
+    im.x = t.a / 500 + im.y
+    im.z = im.y - (t.b / 200)
 
     if (im.x^3 > 0.008856) then im.x = im.x^3 else im.x = (im.x - (16 / 116)) / 7.787 end
     if (im.y^3 > 0.008856) then im.y = im.y^3 else im.y = (im.y - (16 / 116)) / 7.787 end
@@ -132,16 +138,14 @@ local function lab_to_xyz(l, a, b)
 end
 
 --- Converts an XYZ color into a LAB one.
--- @param x channel [0.0, 1.0]
--- @param y channel [0.0, 1.0]
--- @param z channel [0.0, 1.0]
+-- @param table XYZ color {x[0.0, 1.0],y[0.0, 1.0],z[0.0, 1.0]}
 -- @return {l [0, 100], a [-128, 127], b [-128, 127]} table
-local function xyz_to_lab(x, y, z)
+local function xyz_to_lab(t)
     local ref = {x = 95.047, y = 100, z = 108.883}
     
-    x = x / ref.x
-    y = y / ref.y
-    z = z / ref.z
+    x = t.x / ref.x * 100
+    y = t.y / ref.y * 100
+    z = t.z / ref.z * 100
     
     if x > 0.008856 then x = x^(1/3) else x = (7.787 * x) + (16 / 116) end
     if y > 0.008856 then y = y^(1/3) else y = (7.787 * y) + (16 / 116) end
@@ -150,24 +154,80 @@ local function xyz_to_lab(x, y, z)
     return {l = (116 * y) - 16, a = 500 * (x - y), b = 200 * (y - z)}
 end
 
---- Converts a LAB color into an RGB one.
--- @param l lightness channel [0, 100]
--- @param a channel [-128, 127]
--- @param b channel [-128, 127]
--- @return {r [0.0, 1.0]], g [0.0, 1.0]], b [0.0, 1.0]]} table
-local function lab_to_rgb(l, a, b)
-    local xyz = lab_to_xyz(l, a, b)
-    return xyz_to_rgb(xyz.x, xyz.y, xyz.z)
+--- Converts a color to HSV
+-- @param col table in RGB {r[0.0, 1.0],g[0.0, 1.0],b[0.0, 1.0]}, HSV {h[0.0, 1.0],s[0.0, 1.0],v[0.0, 1.0]},
+--   XYZ {x[0.0, 1.0],y[0.0, 1.0],z[0.0, 1.0]}, or LAB {l[0, 100],a[-128, 127],b[-128, 127]}
+-- @return {h[0, 360], s[0.0, 1.0], v[0.0, 1.0]} table
+-- @raise 'Input not a recognized color'
+local function hsv(col)
+    if keyEq({'r', 'g', 'b'}, col) then
+        return rgb_to_hsv(col)
+    elseif keyEq({'h', 's', 'v'}, col) then
+        return col
+    elseif keyEq({'x', 'y', 'z'}, col) then
+        return rgb_to_hsv(xyz_to_rgb(col))
+    elseif keyEq({'l', 'a', 'b'}, col) then
+        return rgb_to_hsv(lab_to_rgb(col))
+    else
+        error('Input not a recognized color')
+    end
 end
 
---- Converts an RGB color into a LAB one.
--- @param r red channel [0.0, 1.0]
--- @param g green channel [0.0, 1.0]
--- @param b blue channel [0.0, 1.0]
--- @return {l [0, 100], a [-128, 127], b [-128, 127]} table
-local function rgb_to_lab(r, g, b)
-    local xyz = rgb_to_xyz(r, g, b)
-    return xyz_to_lab(xyz.x, xyz.y, xyz.z)
+--- Converts a color to RGB
+-- @param col table in RGB {r[0.0, 1.0],g[0.0, 1.0],b[0.0, 1.0]}, HSV {h[0.0, 1.0],s[0.0, 1.0],v[0.0, 1.0]},
+--   XYZ {x[0.0, 1.0],y[0.0, 1.0],z[0.0, 1.0]}, or LAB {l[0, 100],a[-128, 127],b[-128, 127]}
+-- @return {r[0.0, 1.0],g[0.0, 1.0],b[0.0, 1.0]} table
+-- @raise 'Input not a recognized color'
+local function rgb(col)
+    if keyEq({'r', 'g', 'b'}, col) then
+        return col
+    elseif keyEq({'h', 's', 'v'}, col) then
+        return hsv_to_rgb(col)
+    elseif keyEq({'x', 'y', 'z'}, col) then
+        return xyz_to_rgb(col)
+    elseif keyEq({'l', 'a', 'b'}, col) then
+        return xyz_to_rgb(lab_to_xyz(col))
+    else
+        error('Input not a recognized color')
+    end
 end
 
-return { hsv_to_rgb = hsv_to_rgb, rgb_to_hsv = rgb_to_hsv, xyz_to_rgb = xyz_to_rgb, rgb_to_xyz = rgb_to_xyz, lab_to_xyz = lab_to_xyz, xyz_to_lab = xyz_to_lab, lab_to_rgb = lab_to_rgb, rgb_to_lab = rgb_to_lab }
+--- Converts a color to XYZ
+-- @param col table in RGB {r[0.0, 1.0],g[0.0, 1.0],b[0.0, 1.0]}, HSV {h[0.0, 1.0],s[0.0, 1.0],v[0.0, 1.0]},
+--   XYZ {x[0.0, 1.0],y[0.0, 1.0],z[0.0, 1.0]}, or LAB {l[0, 100],a[-128, 127],b[-128, 127]}
+-- @return {x[0.0, 1.0],y[0.0, 1.0],z[0.0, 1.0]} table
+-- @raise 'Input not a recognized color'
+local function xyz(col)
+    if keyEq({'r', 'g', 'b'}, col) then
+        return rgb_to_xyz(col)
+    elseif keyEq({'h', 's', 'v'}, col) then
+        return rgb_to_xyz(hsv_to_rgb(col))
+    elseif keyEq({'x', 'y', 'z'}, col) then
+        return col
+    elseif keyEq({'l', 'a', 'b'}, col) then
+        return lab_to_xyz(col)
+    else
+        error('Input not a recognized color')
+    end
+end
+
+--- Converts a color to XYZ
+-- @param col table in RGB {r[0.0, 1.0],g[0.0, 1.0],b[0.0, 1.0]}, HSV {h[0.0, 1.0],s[0.0, 1.0],v[0.0, 1.0]},
+--   XYZ {x[0.0, 1.0],y[0.0, 1.0],z[0.0, 1.0]}, or LAB {l[0, 100],a[-128, 127],b[-128, 127]}
+-- @return {l[0, 100],a[-128, 127],b[-128, 127]} table
+-- @raise 'Input not a recognized color'
+local function lab(col)
+    if keyEq({'r', 'g', 'b'}, col) then
+        return xyz_to_lab(rgb_to_xyz(col))
+    elseif keyEq({'h', 's', 'v'}, col) then
+        return xyz_to_lab(rgb_to_xyz(hsv_to_rgb(col)))
+    elseif keyEq({'x', 'y', 'z'}, col) then
+        return xyz_to_lab(col)
+    elseif keyEq({'l', 'a', 'b'}, col) then
+        return col
+    else
+        error('Input not a recognized color')
+    end
+end
+
+return { rgb = rgb, hsv = hsv, xyz = xyz, lab = lab }

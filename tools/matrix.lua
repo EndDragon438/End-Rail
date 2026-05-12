@@ -77,7 +77,6 @@ end
 -- @param num scalar.
 -- @param matrix 2D matrix.
 -- @return 2D matrix the product of the matrix and the scalar.
--- @raise 'Matrix sizes do not match'
 function multiplyScalar(num, matrix)
     local temp = {}
     for i = 1, #matrix do
