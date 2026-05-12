@@ -8,8 +8,25 @@ types of stations used along ELR lines: dedicated and inline stations.
 Dedicated stations are the most common type of station, and the most
 versatile.
 
-A station which accepts freight should have its interfaces placed 17 <!-- 19 blocks including both station and interfaces, 17 empty (rail) in between them -->
-blocks away from the station.
+Stations should follow the footprint requirements for general ELR lines,
+leaving a 1m gap either side of the track and having a minimum height
+of 5.5m. Below is an example station cross-section.
+
+![Station cross section](./station_cross_section.png)
+
+A station which accepts freight should have its interfaces placed 18m
+away from the station. Below is an example.
+
+![Station-interface distance](./station_spacing.png)
+
+The astute viewer may notice that there are three interfaces placed in
+this example. A single ELR compliant station may have up to three
+storage interfaces associated with it. This allows for three different
+storage operations to take place at once, at a single station. The
+interfaces may or may not be different types, but due to the [requirements of ELR compliant freight cars](../trains/constraints#m-1-1-2),
+a single station may work with several different types of cargo. This
+is an incredibly powerful capability that makes designing versatile
+stations much simpler.
 
 ## 2.4.2: Inline Stations {#m-2-4-2}
 

@@ -8,8 +8,13 @@ includes the End of the Line Rail Company Manual, for trains and railroads,
 along with other information about the Company.
 
 ## TODO
-- Map, Signals, Stations, Constraints, Styles
-- Tools: Station manager, Map display
+- Content
+    - Map
+    - About
+    - Tracks > Intersections > Scissor crossovers (in use at some stations)
+- Tools
+    - Station manager
+    - Map display
 - Try to figure out how to get automatically generated links for headers with Jekyll (theme?? plugin??)
 - Redesign `color` library to just export functions for getting a specific color space. i.e., `hsv({r, g, b})`.
 Handle all the conversions within the converter

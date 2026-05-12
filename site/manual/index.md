@@ -37,7 +37,7 @@ showing designs in the world will always be block aligned.
 On top of the background, there are several curves. These curves represent
 tracks. ELR uses standard-gauge rail on all non-specialty lines, so for
 readers wishing to use wide- or narrow-gauge tracks instead, the diagrams
-will not be block-accurate and must be scaled up.
+will not be block-accurate and must be scaled appropriately.
 
 Finally, on top of the curves there are several white arrows. These arrows
 represent signals. Each arrow points in the direction the signal should be

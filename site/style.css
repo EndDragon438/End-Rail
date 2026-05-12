@@ -8,9 +8,6 @@ body {
 }
 
 header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: 50px;
     border: 2px black;
     border-bottom: solid;
@@ -18,6 +15,12 @@ header {
     padding: 12px;
     font-size: 16pt;
     background-color: var(--background-darker);
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 header a {
@@ -29,8 +32,25 @@ header a {
     text-decoration: none;
 }
 
+#logo {
+    margin: 0;
+    padding: 0;
+    border: none;
+    position: absolute;
+    float: left;
+    background-color: transparent;
+}
+
+#logo img {
+    max-height: 75px;
+}
+
 header a:hover {
     background-color: white;
+}
+
+#logo:hover {
+    background-color: transparent;
 }
 
 main {
@@ -41,6 +61,10 @@ main {
 @media (max-width: 960px) {
     main {
         width: 90%;
+    }
+    
+    #logo {
+        display: none;
     }
 }
 

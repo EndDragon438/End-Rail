@@ -11,4 +11,4 @@ standardize train and track configurations ensuring interoperability
 across the entire server.
 
 This text provides further information on the Company, as well as a copy
-of the ELR Manual in full. Read on for more.
+of the ELR Manual in full.
