@@ -16,22 +16,6 @@ local function strMult(str, mult)
     return temp
 end
 
--- @param stops array of at least 2 HSV colors {h, s, v}
--- @param t time factor [0.0, 1.0]
--- @return HSV color {h, s, v}
-local function lerp(stops, t)
-    t = t * (#stops - 1)
-
-    local first = stops[math.floor(t) + 1]
-    local second = stops[math.ceil(t) + 1]
-
-    return {
-        h = first.h + (second.h - first.h) * (t % 1),
-        s = first.s + (second.s - first.s) * (t % 1),
-        v = first.v + (second.v - first.v) * (t % 1)
-    }
-end
-
 local function main()
     print("hehehehehe")
     print("hold Ctrl+T to terminate")
@@ -62,11 +46,11 @@ local function main()
         monitor.clear()
         monitor.setCursorPos((w - #text) / 2, height)
         
-        local col = lerp(gradients[args[1]] or gradients.rainbow, time)
-        local bgCol = color.hsv_to_rgb(col.h, col.s, col.v)
-        local txtCol = color.hsv_to_rgb((col.h + 180) % 360, col.s, col.v)
+        local col = color.lerp(gradients[args[1]] or gradients.rainbow, time)
+        local shift = color.hsv(col)
+        local txtCol = color.rgb({ h = (shift.h + 0.5) % 1, s = shift.s, v = shift.v})
         
-        monitor.setPaletteColor(colors.red, colors.packRGB(bgCol.r, bgCol.g, bgCol.b))
+        monitor.setPaletteColor(colors.red, colors.packRGB(col.r, col.g, col.b))
         monitor.setPaletteColor(colors.blue, colors.packRGB(txtCol.r, txtCol.g, txtCol.b))
         
         monitor.write(text)

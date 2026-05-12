@@ -230,4 +230,20 @@ local function lab(col)
     end
 end
 
-return { rgb = rgb, hsv = hsv, xyz = xyz, lab = lab }
+-- @param stops array of at least 2 color tables in RGB, HSV, XYZ, or LAB
+-- @param t time factor [0.0, 1.0]
+-- @return RGB color {r[0.0, 1.0],g[0.0, 1.0],b[0.0, 1.0]}
+local function lerp(stops, t)
+    t = t * (#stops - 1)
+
+    local first = hsv(stops[math.floor(t) + 1])
+    local second = hsv(stops[math.ceil(t) + 1])
+    local new = {
+        h = first.h + (second.h - first.h) * (t % 1),
+        s = first.s + (second.s - first.s) * (t % 1),
+        v = first.v + (second.v - first.v) * (t % 1)
+    }
+    return rgb(new)
+end
+
+return { rgb = rgb, hsv = hsv, xyz = xyz, lab = lab, lerp = lerp }
