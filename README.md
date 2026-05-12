@@ -13,6 +13,8 @@ along with other information about the Company.
 - Try to figure out how to get automatically generated links for headers with Jekyll (theme?? plugin??)
 - Redesign `color` library to just export functions for getting a specific color space. i.e., `hsv({r, g, b})`.
 Handle all the conversions within the converter
+- Double-check crossover design, those two max curves should be identical (I SEE THE ISSUE. i put the points 
+just past the mainline, but that line represents a 3-wide track. gotta move those 1 block further)
 
 ## Resources
 - http://www.railwaycodes.org.uk/line/diagrams0.shtm
