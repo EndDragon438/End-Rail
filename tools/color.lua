@@ -235,9 +235,9 @@ end
 -- @return RGB color {r[0.0, 1.0],g[0.0, 1.0],b[0.0, 1.0]}
 local function lerp(stops, t)
     t = t * (#stops - 1)
-
-    local first = hsv(stops[math.floor(t) + 1])
-    local second = hsv(stops[math.ceil(t) + 1])
+    
+    local first = hsv(stops[math.max(1, math.floor(t) + 1)])
+    local second = hsv(stops[math.min(#stops, math.ceil(t) + 1)])
     local new = {
         h = first.h + (second.h - first.h) * (t % 1),
         s = first.s + (second.s - first.s) * (t % 1),
