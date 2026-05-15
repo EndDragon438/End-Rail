@@ -14,7 +14,7 @@ local expect = require 'cc.expect'.expect
 --- Parse a pnft image from a string.
 --
 -- @tparam string image The image contents.
--- @return table The parsed image.
+-- @treturn table The parsed image.
 local function parse(image)
     expect(1, image, "string")
     local cols = string.sub(image, 1, string.find(image, '\n\n'))
