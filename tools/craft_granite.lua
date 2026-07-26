@@ -39,12 +39,12 @@ while true do
     -- Step 2: craft diorite (go for 64 at once if possible; compensate for slow program)
     --   a) turtle.craft()
     turtle.select(1)
-    turtle.craft()
+    turtle.craft(64)
     -- Step 3: craft granite
     --   a) grab more quartz
     --   b) craft
-    getOrWait(quartz, 2)
-    turtle.craft()
+    getOrWait(quartz, 2, 64)
+    turtle.craft(64)
     -- Step 4: output product
     --   a) drop() (from correct slot)
     turtle.drop()
