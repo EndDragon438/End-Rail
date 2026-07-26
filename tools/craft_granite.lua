@@ -1,4 +1,4 @@
--- Auto-craft diorite from cobblestone and quartz
+-- Auto-craft granite from cobblestone and quartz
 -- Quartz inventory on the top
 -- Cobblestone inventory on the bottom
 -- Outputs to front
@@ -32,16 +32,20 @@ while true do
     -- Step 1: grab items from adjacent inventories
     --   a) getOrWait(item)
     --   b) moveItemToSlot()
-    getOrWait(cobble, 1)
-    getOrWait(quartz, 2)
-    getOrWait(quartz, 5)
-    getOrWait(cobble, 6)
-    -- Step 2: craft items (go for 64 at once if possible; compensate for slow program)
+    getOrWait(cobble, 1, 32)
+    getOrWait(quartz, 2, 32)
+    getOrWait(quartz, 5, 32)
+    getOrWait(cobble, 6, 32)
+    -- Step 2: craft diorite (go for 64 at once if possible; compensate for slow program)
     --   a) turtle.craft()
+    turtle.select(1)
     turtle.craft()
-    -- Step 3: output product
+    -- Step 3: craft granite
+    --   a) grab more quartz
+    --   b) craft
+    getOrWait(quartz, 2)
+    turtle.craft()
+    -- Step 4: output product
     --   a) drop() (from correct slot)
-    turtle.drop()
-    turtle.select(turtle.getSelectedSlot() + 1)
     turtle.drop()
 end
