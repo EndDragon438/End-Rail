@@ -63,3 +63,42 @@ Usage is extensively documented within the file.
 ```shell
 wget https://raw.githubusercontent.com/EndDragon438/End-Rail/refs/heads/main/tools/matrix.lua
 ```
+
+## Other Tools
+
+These tools are unrelated to the railway.
+
+### Certus Farm
+
+This is a mining turtle program to farm Certus Quartz.
+
+```shell
+wget https://raw.githubusercontent.com/EndDragon438/End-Rail/refs/heads/main/tools/certus_farm.lua
+```
+
+### Craft Granite
+
+This is a crafty turtle program to craft granite from quartz and
+cobblestone.
+
+```shell
+wget https://raw.githubusercontent.com/EndDragon438/End-Rail/refs/heads/main/tools/craft_granite.lua
+```
+
+### endwuzhere
+
+This is a just for fun monitor program to display some scrolling rainbow
+text.
+
+```shell
+wget https://raw.githubusercontent.com/EndDragon438/End-Rail/refs/heads/main/tools/endwuzhere.lua
+```
+
+### PNFT
+
+This is a library for working with PNFT images, a modification of the NFT
+image format which allows specifying a palette.
+
+```shell
+wget https://raw.githubusercontent.com/EndDragon438/End-Rail/refs/heads/main/tools/pnft.lua
+```
