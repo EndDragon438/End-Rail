@@ -8,7 +8,7 @@
 -- Slot 2 on the both for this (using 1-slot storage drawers)
 quartz = peripheral.wrap("top")
 cobble = peripheral.wrap("bottom")
-slot = 2
+index = 2
 
 -- Get items from adjacent inventory or wait until they are available
 -- @param inv wrapped peripheral inventory
@@ -16,10 +16,10 @@ slot = 2
 -- @param count? integer number of items to wait for
 local function getOrWait(inv, slot, count)
     count = count or 64
-    local deets = inv.getItemDetail(slot)
+    local deets = inv.getItemDetail(index)
     -- the 'wait' part
-    while not deets or deets.count < count do
-        deets = inv.getItemDetail(slot)
+    while not deets or deets.count < math.min(64, count + 1) do
+        deets = inv.getItemDetail(index)
     end
     -- grab that shit
     turtle.select(slot)
