@@ -3,11 +3,20 @@
 -- CLI arguments. First argument should always be present, and be either
 -- 'up' or 'down'
 local args = {...}
+local HELP = "Usage: slope up|down [width height depth]"
 
 if #args < 1 then
     print("Please pass a direction")
+    print(HELP)
+    return
 elseif args[1] ~= "up" and args[1] ~= "down" then
     print("Direction must be either 'up' or 'down'")
+    print(HELP)
+    return
+elseif #args ~= 4 then
+    print("All size parameters must be present or none (Default to 11, 5, 8)")
+    print(HELP)
+    return
 end
 
 -- Refuels the turtle from the first slot, then returns to the previous
@@ -17,7 +26,7 @@ function refuel()
     turtle.select(1)
     local success = turtle.refuel()
     turtle.select(save)
-    return sucess
+    return success
 end
 
 -- Digs until the block in front of the turtle is empty
@@ -94,7 +103,7 @@ function dig(dir)
     print("Press Ctrl+T to stop")
     local counter = 0
     while true do
-        if turtle.getFuelLevel() < 80 then
+        if turtle.getFuelLevel() < 500 then
            refuel()
         end
         -- dig a face from the top left corner

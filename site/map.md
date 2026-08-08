@@ -5,8 +5,7 @@ applicable dimensions.
 
 ### Overworld
 
-Coming soon!
-<!--![Overworld Map](./overworld_map.png)-->
+![Overworld Map](./overworld_map.webp)
 
 ### Nether
 
