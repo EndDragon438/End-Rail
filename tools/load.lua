@@ -15,17 +15,29 @@ while true do
     
     -- Load cannon
     place.rotate(45, -1)
+    while place.isRunning() do
+        sleep(0.05)
+    end
     place.rotate(45, 1)
     
     ram.move(5, 1)
+    while place.isRunning() do
+        sleep(0.05)
+    end
     ram.move(5, -1)
     
     sleep(0.55)
     
     place.rotate(45, -1)
+    while place.isRunning() do
+        sleep(0.05)
+    end
     place.rotate(45, 1)
     
     ram.move(5, 1)
+    while place.isRunning() do
+        sleep(0.05)
+    end
     ram.move(5, -1)
     
     -- Signal 'loaded'
